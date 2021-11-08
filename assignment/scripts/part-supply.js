@@ -20,8 +20,8 @@ console.log(supplyChanges[1]);
 // 4. The last item was added by mistake. Remove it from the 'supplyChanges' 
 //    array & console.log the value removed.
 console.log('4. Removed item:');
-let last = supplyChanges.pop()
-console.log(last);
+
+console.log(supplyChanges.pop());
 
 // 5. A delivery of 25 more parts arrived. Add the value 25 to the end of the array
 console.log('5. Adding 25 to supplyChanges.');
@@ -34,20 +34,25 @@ console.log(supplyChanges);
 //    - if the value is 0, log 'No Change.'
 //    - if the value is negative, format the log as 'Removed x parts.' 
 console.log('6. Showing supplyChanges...');
-for(supply of supplyChanges) {
-    if (supply !== 0) {
-        supply > 0 ? console.log(`Added ${supply} parts`) : console.log(`Removed ${Math.abs(supply)} parts`);
-    } else {
-        console.log('No change');
+    for(i=0; i<supplyChanges.length; i++) {
+        if(supplyChanges[i] === 0) {
+            console.log('No Change.');
+        } else if (supplyChanges[i] > 0) {
+            console.log(`Added ${supplyChanges[i]} parts.`)
+        } else {
+            console.log(`Removed ${Math.abs(supplyChanges[i])} parts.`)
+        }
     }
-}
-
 
 // STRETCH GOALS
 console.log('---  Stretch Goals  ---');
+
 // 7. Rewrite the `for` loop from #6 as a `for of` loop. 
 console.log('7. Showing supplyChanges with "for of" loop');
-//I already did though
+for(supply of supplyChanges) {
+    supply > 0 ? console.log(`Added ${supply} parts`) : supply === 0 ? console.log('No change') : console.log(`Removed ${Math.abs(supply)} parts`);
+}
+
 
 // 8. Rewrite the `for` loop from #6 as a `while` loop.
 console.log('8. Showing supplyChanges with "while" loop');
@@ -73,5 +78,5 @@ console.log('9. Total supplies available is:');
 total=0;
 for(supply of supplyChanges) {
     total+=supply;
-    console.log(total);
 }
+console.log(total);
